@@ -6,22 +6,19 @@ import React, { useEffect, useState } from "react";
 //*       Import @mui
 //*       @mui/material
 import Grid from "@mui/material/Grid";
-// import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import Card from "@mui/material/Card";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
-//import IconButton from "@mui/material/IconButton";
 import Divider from "@mui/material/Divider";
-//import Chip from "@mui/material/Chip";
-//import Switch from "@mui/material/Switch";
+
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Link from "@mui/material/Link";
-import { Masonry } from "@mui/lab";
+import Masonry from "@mui/lab/Masonry";
 //*       @mui Theme
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 //import useMediaQuery from '@mui/material/useMediaQuery';
@@ -35,7 +32,7 @@ function renderPost(post) {
   return (
     <Paper item xs={4} key={id}>
       <Card>
-        <CardMedia sx={{ height: 140 }} image={img} title="green iguana" />
+        <CardMedia sx={{ height: 140 }} image={img} title={title} />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
             <Link
