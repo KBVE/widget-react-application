@@ -45,10 +45,5 @@
   },
   "devDependencies": {
     "parcel-bundler": "^1.12.5"
-  },
-  "alias": {
-    "react": "preact/compat",
-    "react-dom": "preact/compat",
-    "react/jsx-runtime": "preact/jsx-runtime"
   }
 }

@@ -71,7 +71,7 @@ function App({ kbve_dom_element }) {
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
               <Link
-                href={`https://kbve.com/${_dataJSON}/${slug}/`}
+                href={`https://kbve.com/application/${slug}/`}
                 underline="hover"
                 target="_blank"
                 rel="noopener noreferrer"
