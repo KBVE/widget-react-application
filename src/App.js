@@ -7,59 +7,28 @@ import React, { useEffect, useState } from "react";
 //*       @mui/material
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-import Stack from "@mui/material/Stack";
 import Card from "@mui/material/Card";
-import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Divider from "@mui/material/Divider";
-
+//import Modal from '@mui/material/Modal';
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Link from "@mui/material/Link";
-import Masonry from "@mui/lab/Masonry";
+import Box from "@mui/material/Box";
+//import Masonry from "@mui/lab/Masonry";
 //*       @mui Theme
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 //import useMediaQuery from '@mui/material/useMediaQuery';
 
-function renderPost(post) {
-  const {
-    slug,
-    data: { title, id, description, img },
-  } = post;
+//*       Carousel
+import Carousel from 'react-material-ui-carousel'
 
-  return (
-    <Paper item xs={4} key={id}>
-      <Card>
-        <CardMedia sx={{ height: 140 }} image={img} title={title} />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            <Link
-              href={`https://kbve.com/application/${slug}/`}
-              underline="hover"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {title}
-            </Link>
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {description}
-          </Typography>
-        </CardContent>
-        <Divider />
-        <CardActions>
-          <Button size="small">Share</Button>
-          <Button size="small">Learn More</Button>
-        </CardActions>
-      </Card>
-    </Paper>
-  );
-}
 
 function App({ kbve_dom_element }) {
   const _limit = kbve_dom_element.getAttribute("data-limit");
+  const _dataJSON = kbve_dom_element.getAttribute("data-json");
   const [loading, setLoading] = useState();
   const [error, setError] = useState("");
   const [data, setData] = useState([]);
@@ -78,7 +47,7 @@ function App({ kbve_dom_element }) {
 
   useEffect(() => {
     setLoading(true);
-    fetch("https://kbve.com/application/application.json")
+    fetch(`https://kbve.com/${_dataJSON}/${_dataJSON}.json`)
       .then((response) => response.json())
       .then((data) => {
         setLoading(false);
@@ -89,9 +58,53 @@ function App({ kbve_dom_element }) {
         setLoading(false);
         setError("error fetching from KBVE");
       });
-  }, [_limit]);
+  }, [_dataJSON, _limit]);
 
-
+  function renderPost(post) {
+    const {
+      slug,
+      data: { title, id, description, img },
+    } = post;
+  
+    return (
+      <Paper item xs={4} key={id}>
+        <Card>
+          <CardMedia sx={{ height: 140 }} image={img} title={title} />
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="div">
+              <Link
+                href={`https://kbve.com/${_dataJSON}/${slug}/`}
+                underline="hover"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {title}
+              </Link>
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              {description}
+            </Typography>
+          </CardContent>
+          <Divider />
+          <CardActions>
+          <Box
+            m={1}
+            display="flex"
+            direction="row"
+            justifyContent="center"
+            alignItems="center"
+           
+          >
+            <Button variant="contained" sx={{m: 1}} size="small">KBVE</Button>
+            <Button variant="contained" sx={{m: 1}} size="small">Share</Button>
+            <Button variant="contained" sx={{m: 1}} size="small">Learn More</Button>
+            </Box>
+          </CardActions>
+        </Card>
+      </Paper>
+    );
+  }
+  
 
   function noDraft(post) {
     return !post.data.draft;
@@ -104,39 +117,11 @@ function App({ kbve_dom_element }) {
           {loading && "Loading..."}
           {error && error}
           {!!data.length && (
-            <Masonry columns={2} spacing={2}>
+            <Carousel>
               {data.filter(noDraft).map(renderPost)}
-            </Masonry>
+            </Carousel>
           )}
         </Grid>
-
-        <Card>
-          <Box sx={{ p: 1 }}>
-            <Stack 
-            alignItems="center"
-            justifyContent="center"
-            spacing={0.5}>
-            ◈
-            </Stack>
-          </Box>
-          <Divider />
-          <Stack
-            direction="row"
-            alignItems="center"
-            justifyContent="center"
-            sx={{ px: 2, py: 1, bgcolor: "background.default" }}
-          >
-            <Link
-              href="https://kbve.com/"
-              underline="hover"
-              target="_blank"
-              rel="noopener noreferrer"
-              color="text.primary"
-            >
-              Widget by KBVE
-            </Link>
-          </Stack>
-        </Card>
       </ThemeProvider>
     </>
   );
