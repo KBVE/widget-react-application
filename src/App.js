@@ -16,15 +16,13 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Link from "@mui/material/Link";
-import Box from "@mui/material/Box";
 //import Masonry from "@mui/lab/Masonry";
 //*       @mui Theme
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 //import useMediaQuery from '@mui/material/useMediaQuery';
 
 //*       Carousel
-import Carousel from 'react-material-ui-carousel'
-
+import Carousel from "react-material-ui-carousel";
 
 function App({ kbve_dom_element }) {
   const _limit = kbve_dom_element.getAttribute("data-limit");
@@ -65,7 +63,7 @@ function App({ kbve_dom_element }) {
       slug,
       data: { title, id, description, img },
     } = post;
-  
+
     return (
       <Paper item xs={4} key={id}>
         <Card>
@@ -86,25 +84,21 @@ function App({ kbve_dom_element }) {
             </Typography>
           </CardContent>
           <Divider />
-          <CardActions>
-          <Box
-            m={1}
-            display="flex"
-            direction="row"
-            justifyContent="center"
-            alignItems="center"
-           
-          >
-            <Button variant="contained" sx={{m: 1}} size="small">KBVE</Button>
-            <Button variant="contained" sx={{m: 1}} size="small">Share</Button>
-            <Button variant="contained" sx={{m: 1}} size="small">Learn More</Button>
-            </Box>
+          <CardActions sx={{ justifyContent: "center" }}>
+            <Button variant="contained" sx={{ m: 1 }} size="small">
+              KBVE
+            </Button>
+            <Button variant="contained" sx={{ m: 1 }} size="small">
+              Share
+            </Button>
+            <Button variant="contained" sx={{ m: 1 }} size="small">
+              Learn More
+            </Button>
           </CardActions>
         </Card>
       </Paper>
     );
   }
-  
 
   function noDraft(post) {
     return !post.data.draft;
@@ -117,9 +111,7 @@ function App({ kbve_dom_element }) {
           {loading && "Loading..."}
           {error && error}
           {!!data.length && (
-            <Carousel>
-              {data.filter(noDraft).map(renderPost)}
-            </Carousel>
+            <Carousel>{data.filter(noDraft).map(renderPost)}</Carousel>
           )}
         </Grid>
       </ThemeProvider>
