@@ -84,7 +84,7 @@ function App({ kbve_dom_element }) {
             </Typography>
           </CardContent>
           <Divider />
-          <CardActions>
+          <CardActions sx={{ justifyContent: "center" }}>
             <Button variant="contained" sx={{ m: 1 }} size="small">
               KBVE
             </Button>
