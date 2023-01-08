@@ -50,8 +50,7 @@
   "devDependencies": {
     "parcel-bundler": "^1.12.5"
   },
-  "resolutions": {
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0"
- }
+  "alias": {
+    "process": false
+  }
 }
