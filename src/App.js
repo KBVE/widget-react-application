@@ -16,13 +16,13 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Link from "@mui/material/Link";
-import Masonry from "@mui/lab/Masonry";
+//import Masonry from "@mui/lab/Masonry";
 //*       @mui Theme
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 //import useMediaQuery from '@mui/material/useMediaQuery';
 
 //*       Carousel
-//import Carousel from "react-material-ui-carousel";
+import Carousel from "react-material-ui-carousel";
 
 function App({ kbve_dom_element }) {
   const _limit = kbve_dom_element.getAttribute("data-limit");
@@ -71,7 +71,7 @@ function App({ kbve_dom_element }) {
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
               <Link
-                href={`https://kbve.com/application/${slug}/`}
+                href={`https://kbve.com/${_dataJSON}/${slug}/`}
                 underline="hover"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -111,7 +111,7 @@ function App({ kbve_dom_element }) {
           {loading && "Loading..."}
           {error && error}
           {!!data.length && (
-            <Masonry>{data.filter(noDraft).map(renderPost)}</Masonry>
+            <Carousel>{data.filter(noDraft).map(renderPost)}</Carousel>
           )}
         </Grid>
       </ThemeProvider>
