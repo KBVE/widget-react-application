@@ -22,7 +22,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 //import useMediaQuery from '@mui/material/useMediaQuery';
 
 //*       Carousel
-import Carousel from "react-material-ui-carousel";
+import Carousel from "./Carousel";
 
 function App({ kbve_dom_element }) {
   const _limit = kbve_dom_element.getAttribute("data-limit");

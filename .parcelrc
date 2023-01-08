@@ -1,8 +1,0 @@
-{
-"optimizers": {
-    "*.js": ["parcel-optimizer-license-headers"]
-  },
-  "compressors": {
-    "*.js": ["...", "@parcel/compressor-gzip"]
-  }
-}

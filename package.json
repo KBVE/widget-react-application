@@ -2,16 +2,25 @@
   "name": "widget-react-application",
   "version": "0.1.0",
   "private": true,
+  "targets":{
+    "browser": {
+       "includeNodeModules": true
+    }
+  },
+  "type": "module",
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@mui/icons-material": "^5.11.0",
     "@mui/lab": "^5.0.0-alpha.114",
     "@mui/material": "^5.11.3",
+    "@mui/styles": "^5.11.2",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "preact": "^10.11.3",
     "preact-compat": "^3.19.0",
+    "process": "^0.11.10",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-material-ui-carousel": "^3.4.2",
@@ -21,11 +30,11 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "kbve": "parcel build src/index.js --no-source-maps --experimental-scope-hoisting -d docs",
+    "kbve": "parcel build src/index.js --no-source-maps --experimental-scope-hoisting -d ./docs",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  
+
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -34,10 +43,12 @@
   },
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "devDependencies": {
+    "parcel": "^2.8.2",
     "parcel-bundler": "^1.12.5"
   },
   "alias": {
-    "process": "process/browser.js"
+    "process": false,
+    "buffer": "buffer",
+    "assert": "assert"
   }
-  
 }
