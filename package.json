@@ -2,12 +2,12 @@
   "name": "widget-react-application",
   "version": "0.1.0",
   "private": true,
-  "targets":{
+  "targets": {
+    "context": "browser",
     "browser": {
-       "includeNodeModules": true
+      "includeNodeModules": true
     }
   },
-  "type": "module",
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
@@ -23,18 +23,18 @@
     "process": "^0.11.10",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-material-ui-carousel": "^3.4.2",
+    "react-responsive-carousel": "^3.2.23",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "kbve": "parcel build src/index.js --no-source-maps --experimental-scope-hoisting -d ./docs",
+    "kbve": "parcel build src/index.js --no-source-maps --experimental-scope-hoisting -d docs",
+    "beta": "parcel build src/index.js --no-source-maps --experimental-scope-hoisting --target browser --bundle-node-modules -d docs --detailed-report",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -47,7 +47,7 @@
     "parcel-bundler": "^1.12.5"
   },
   "alias": {
-    "process": false,
+    "process": "process/browser.js",
     "buffer": "buffer",
     "assert": "assert"
   }

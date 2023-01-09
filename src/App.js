@@ -107,7 +107,7 @@ function App({ kbve_dom_element }) {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <Grid container>
+        <Grid fluid="md">
           {loading && "Loading..."}
           {error && error}
           {!!data.length && (
